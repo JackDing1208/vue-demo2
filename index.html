@@ -5,13 +5,35 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>component</title>
+    <style>
+        .app {
+            background: aqua;
+        }
+    </style>
 </head>
 <body>
-    <div class="app" id="app">
-        <app1></app1>
-    </div>
-    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.common.dev.js"></script>
-    <script src="./main.js"></script>
+<div class="app" id="app">
+    <h2>我是父组件</h2>
+
+    <h4>简易组件模板</h4>
+    <btn-component></btn-component>
+
+    <h4>用props接收固定的数据</h4>
+    <child-component msg="来自父组件的数据"></child-component>
+
+    <h4>v-bind把input中的动态内容传递给子组件</h4>
+    <input type="text" v-model="parentMessage">
+    <bind-component :msg="parentMessage"></bind-component>
+    <bind-component :msg="parentMessage2"></bind-component>
+
+    <h4>把input中的动态内容传递给子组件改变其宽度</h4>
+    子组件的宽度：<input type="text" v-model.lazy="width">
+    <width-component :prop1="width"></width-component>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="./main.js"></script>
 </body>
 </html>
