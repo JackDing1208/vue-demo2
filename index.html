@@ -19,10 +19,10 @@
     <h4>简易组件模板</h4>
     <btn-component></btn-component>
 
-    <h4>用props接收固定的数据</h4>
+    <h4>子组件用props接收固定的数据</h4>
     <child-component msg="来自父组件的数据"></child-component>
 
-    <h4>v-bind把input中的动态内容传递给子组件</h4>
+    <h4>v-model把input中的动态内容传递给子组件</h4>
     <input type="text" v-model="parentMessage">
     <bind-component :msg="parentMessage"></bind-component>
     <bind-component :msg="parentMessage2"></bind-component>
@@ -30,6 +30,24 @@
     <h4>把input中的动态内容传递给子组件改变其宽度</h4>
     子组件的宽度：<input type="text" v-model.lazy="width">
     <width-component :prop1="width"></width-component>
+
+    <h4>父组件监听子组件中的事件获取数据</h4>
+    您的余额是{{amount1}} <br>
+    <amount-component @subclick="amountChange"></amount-component>
+    用v-model相当于绑定input事件，当触发input事件时把值传给绑定的对象 <br>
+    您的余额是{{amount2}} <br>
+    <amount-component v-model="amount2"></amount-component>
+
+
+    <h4>$parent获取父组件的数据</h4>
+    <getparent-component></getparent-component>
+
+    <h4>$refs获取子组件的数据</h4>
+    <button @click="getChild">{{init}}</button>
+
+    <h4>独立组件通过中间Vue-bus传递数据</h4>
+    <aaa-component ref="aaa"></aaa-component>
+    <bbb-component ref="bbb"></bbb-component>
 </div>
 
 
