@@ -1,33 +1,11 @@
-/*声明全局组件
-Vue.component('firs-component',{
+/*
+声明全局组件
+*/
+Vue.component('global-component',{
     template:'<div>我是第一个组件</div>'
-})*/
+})
 
 var app = new Vue({
-    el: "#app",
-    data: {
-        parentMessage: '父组件中双向绑定的data',
-        parentMessage2: '22222动态的data',
-        width: 200,
-        amount1: 1000,
-        amount2: 1000,
-        bus: new Vue(),
-        init:'111',
-        line:'line1'
-    },
-    methods: {
-        amountChange: function (value) {    //value为子组件传过来的参数
-            this.amount1 = value
-        },
-        getChild:function () {
-            this.init=this.$refs.aaa.msg
-        },
-        lineSwitch(value){
-            this.line='line'+value
-        }
-    },
-
-
     //声明局部组件
     components: {
         'btn-component': {
@@ -156,8 +134,30 @@ var app = new Vue({
         'line4':{
             template:`<div>低头思故乡</div>`
         }
-
-
+    },
+    el: "#app",
+    data: {
+        parentMessage: '父组件中双向绑定的data',
+        parentMessage2: '22222动态的data',
+        width: 200,
+        amount1: 1000,
+        amount2: 1000,
+        bus: new Vue(),
+        init:'111',
+        line:'line1'
+    },
+    methods: {
+        amountChange: function (value) {    //value为子组件传过来的参数
+            this.amount1 = value
+        },
+        getChild:function () {
+            this.init=this.$refs.aaa.msg
+        },
+        lineSwitch(value){
+            this.line='line'+value
+        }
+    },
+    mounted:function () {
+        this.init=this.$refs.bbb.content
     }
-
 })
