@@ -48,6 +48,16 @@
     <h4>独立组件通过中间Vue-bus传递数据</h4>
     <aaa-component ref="aaa"></aaa-component>
     <bbb-component ref="bbb"></bbb-component>
+
+    <h4>slot插槽</h4>
+    <slot-component>父组件插入的内容</slot-component>
+
+    <h4>动态组件</h4>
+    <component :is="line"></component>
+    <button @click="lineSwitch(1)">第一句</button>
+    <button @click="lineSwitch(2)">第二句</button>
+    <button @click="lineSwitch(3)">第三句</button>
+    <button @click="lineSwitch(4)">第四句</button>
 </div>
 
 

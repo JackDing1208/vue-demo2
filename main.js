@@ -12,7 +12,8 @@ var app = new Vue({
         amount1: 1000,
         amount2: 1000,
         bus: new Vue(),
-        init:'111'
+        init:'111',
+        line:'line1'
     },
     methods: {
         amountChange: function (value) {    //value为子组件传过来的参数
@@ -20,6 +21,9 @@ var app = new Vue({
         },
         getChild:function () {
             this.init=this.$refs.aaa.msg
+        },
+        lineSwitch(value){
+            this.line='line'+value
         }
     },
 
@@ -135,7 +139,23 @@ var app = new Vue({
                 this.init=this.$parent.parentMessage
             }
         },
-
+        'slot-component':{
+            template:`<div>
+                    <slot>默认内容</slot>
+                       </div>`
+        },
+        'line1':{
+            template:`<div>窗前明月光</div>`
+        },
+        'line2':{
+            template:`<div>疑是地上霜</div>`
+        },
+        'line3':{
+            template:`<div>举头望明月</div>`
+        },
+        'line4':{
+            template:`<div>低头思故乡</div>`
+        }
 
 
     }
